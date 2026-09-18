@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { LogIn, Eye, EyeOff, CheckSquare } from "lucide-react";
-import axios from "axios";
+import api from "../services/api";
 import ThemeToggle from "../components/ThemeToggle";
 function Login() {
   const navigate = useNavigate();
@@ -26,8 +26,8 @@ function Login() {
     try {
       setLoading(true);
 
-      const response = await axios.post(
-        "http://localhost/smart-todo-api/controllers/login.php",
+      const response = await api.post(
+        "/controllers/login.php",
         {
           login: login.trim(),
           password: password

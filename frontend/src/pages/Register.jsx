@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserPlus, Eye, EyeOff, CheckSquare } from "lucide-react";
-import axios from "axios";
+import api from "../services/api";
 import ThemeToggle from "../components/ThemeToggle";
 
 function Register() {
@@ -35,8 +35,8 @@ function Register() {
     try {
       setLoading(true);
 
-      const response = await axios.post(
-        "http://localhost/smart-todo-api/controllers/register.php",
+      const response = await api.post(
+       "/controllers/register.php",
         {
           username: username.trim(),
           email: email.trim(),
